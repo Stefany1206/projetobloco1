@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico Hábito de Leitura - População Brasileira</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="grafico-leitura" style="width: 100%; height: 500px;"></div>
+
+    <script>
+        // Dados fictícios de hábitos de leitura da população brasileira
+        var data = [
+            {
+                x: ['Leitura Diária', 'Leitura Semanal', 'Leitura Mensal', 'Raramente Leem', 'Nunca Leem'],
+                y: [30, 40, 20, 5, 5], // Percentual de pessoas
+                type: 'bar',
+                name: '2024'
+            }
+        ];
+
+        // Layout do gráfico
+        var layout = {
+            title: 'Hábito de Leitura da População Brasileira (2024)',
+            xaxis: { title: 'Frequência de Leitura' },
+            yaxis: { title: 'Porcentagem da População (%)' },
+            barmode: 'group'
+        };
+
+        // Função para atualizar os dados dinamicamente
+        function atualizarGrafico(novosDados) {
+            Plotly.react('grafico-leitura', novosDados, layout);
+        }
+
+        // Renderiza o gráfico inicial
+        Plotly.newPlot('grafico-leitura', data, layout);
+
+        // Simula a atualização dos dados com novos valores após 5 segundos
+        setTimeout(function() {
+            var novosDados = [
+                {
+                    x: ['Leitura Diária', 'Leitura Semanal', 'Leitura Mensal', 'Raramente Leem', 'Nunca Leem'],
+                    y: [35, 38, 15, 7, 5], // Novos valores
+                    type: 'bar',
+                    name: '2025'
+                }
+            ];
+
+            atualizarGrafico(novosDados);
+        }, 5000);
+    </script>
+</body>
+</html>
